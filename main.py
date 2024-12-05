@@ -144,6 +144,17 @@ st.write(f"Posledni aktualizace dat probehla: {creation_date}.")
 st.markdown(f"""
     <span style="background-color: lightcoral; color: white; padding: 10px; border-radius: 5px;">
        Cervenou barvou zvyraznujeme produkty, kde zasoba vydrzi menej nez dni: {stockdays}
-    </span>
+    </span></br></br>
 """, unsafe_allow_html=True)
+
+st.info("""
+**Vysvětlivky**:\n
+**Nákupní cena bez DPH**: NC jednoho kusu produktu.\n
+**Hodnota skladu v CZK**: počet ks * NC jednoho kus = hodnota v CZK bez DPH, která leží skladem.\n
+**Prodeje/měsíc (průměr)**: průměrný počet ks, který se prodá za měsíc. Je to hodnota "Prodeje od 1.9.2023"
+přepočítaná aritmeticky na měsíce.\n
+**Prodeje od 1.9.2023**: celkový počet ks, který se prodal od 1.9.2023 do data aktualizace.\n
+**Posl.příjem**: datum, kdy naposledy byl daný produkt naskladněný do Shipmallu.\n
+**Kolik dni vydrží sklad?**: počet ks na skladě / prodeje za měsíc... přepočtené na dny. Na jak dlouho máme cca zásobu.
+""")
 
