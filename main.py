@@ -81,15 +81,16 @@ starting_date = datetime(2023, 9, 1)
 days =  (today - starting_date).days
 
 merged_data["Prodeje/mesic (prumer)"] = merged_data["Množ."] / days * 30 # use of original columns name, before changing it
-merged_data["Prodeje/mesic (prumer)"] = merged_data["Prodeje/mesic (prumer)"].fillna(0).astype(int)
+merged_data["Prodeje/mesic (prumer)"] =abs(merged_data["Prodeje/mesic (prumer)"].fillna(0).astype(int))
 # After the calculation is done, we change Mnoz. tu integer
-merged_data["Množ."] = merged_data["Množ."].fillna(0).astype(int)
+merged_data["Množ."] = abs(merged_data["Množ."].fillna(0).astype(int))
 
 # Add new column - Warehouse Value
 merged_data["Hodnota skladu v CZK"] = merged_data["Volné"].astype(float) * merged_data["purchasePrice_int"].astype(float) # use of original columns name, before changing it
 merged_data["Hodnota skladu v CZK"] = merged_data["Hodnota skladu v CZK"].astype(float).round(1)
 warehouse_value = merged_data["Hodnota skladu v CZK"].sum() # Calculation of total value of Warehouse - all products
 merged_data["Hodnota skladu v CZK"] = merged_data["Hodnota skladu v CZK"].apply(lambda x: f"{x:.1f}")
+
 
 # Add new column - Warehouse stock in days
 # It is necessary to check we do not divide by zero or negative number
@@ -100,13 +101,10 @@ for index, row in merged_data.iterrows():
             merged_data.at[index, "Kolik dni vydrzi sklad?"] = row["Volné"] / abs(row["Prodeje/mesic (prumer)"])
             merged_data.at[index, "Kolik dni vydrzi sklad?"] *= 30 # Prepocitame mesiace na dni
             merged_data.at[index, "Kolik dni vydrzi sklad?"] = round(merged_data.at[index, "Kolik dni vydrzi sklad?"])
-            print(f"Podmínka splněna pro řádek: {index}")
         else:
             merged_data.at[index, "Kolik dni vydrzi sklad?"] = 0 # Priradi 0, sklad je 0, treba objednat
-            print ("Neco jineho")
     else:
         merged_data.at[index, "Kolik dni vydrzi sklad?"] = 500 # Priradi 500, lebo predaje su skoro nulove, zasoba vydrzi dlho
-        print("Prumer je mensi ako nula")
 
 # Change of the columns names and their orders
 merged_data = merged_data.rename(columns={"id": "Kod produktu", "name": "Nazev produktu", "purchasePrice": "Nakupni cena bez DPH", "Volné": "Skladem ks", "Množ.": "Prodeje od 1.9.2023"})
@@ -115,7 +113,6 @@ merged_data = merged_data[new_col_order]
 merged_data = merged_data.drop(columns="code")
 # Sort data by Hodnota skladu
 merged_data = merged_data.sort_values(by="Kolik dni vydrzi sklad?", ascending=True)
-print(merged_data)
 
 
 # Here starts the web page making
