@@ -1,0 +1,13 @@
+Stačí prepísať súbory v adresári "data".
+
+shoptet_products.csv stačí len vtedy, ak pribudol nový produkt do Shoptetu alebo sa zmenila nákupná cena.
+Je to zo sekce Export, CSV, Hlavný cenník, filter "len produkty" - nie služby a balíčky.
+Odstránime všetky stĺpce okrem code;name;purchasePrice.
+
+Zo Shipmallu exportujeme Stav skladu a uložíme ako warehouse_report.csv
+Musíme ale do reportu zahrnúť všetko, nielen to čo je skladom.
+Odstráníme všetky stĺpce okrem ID;Volné;Posl.příjem.
+
+Zo Shipmallu pak exportujeme Pohyby na sklade - uložíme ako warehouse_movements.csv
+Zahrnieme tam všetký akce "výdej" od 1.9.2023 - odkedy mám CHZ.
+Odstráníme všetky stĺpce okrem ID;Množ.
