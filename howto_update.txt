@@ -11,3 +11,7 @@ Odstráníme všetky stĺpce okrem ID;Volné;Posl.příjem.
 Zo Shipmallu pak exportujeme Pohyby na sklade - uložíme ako warehouse_movements.csv
 Zahrnieme tam všetký akce "výdej" od 1.9.2023 - odkedy mám CHZ.
 Odstráníme všetky stĺpce okrem ID;Množ.
+POZOR: len kategorie VYDEJ
+
+Potom to commit a push na GitHub a najdem to na adrese:
+https://shipmall-warehouse.streamlit.app/
