@@ -75,7 +75,7 @@ merged_data = pandas.merge(df_products, merged_data, left_on="code", right_on="I
 
 
 # Add new column - average sales pers months
-# Number od days between today and 1.9.2023
+# Number od days between today and 1.9.2024
 today = datetime.today()
 starting_date = datetime(2024, 9, 1)
 days =  (today - starting_date).days
@@ -107,8 +107,8 @@ for index, row in merged_data.iterrows():
         merged_data.at[index, "Kolik dni vydrzi sklad?"] = 500 # Priradi 500, lebo predaje su skoro nulove, zasoba vydrzi dlho
 
 # Change of the columns names and their orders
-merged_data = merged_data.rename(columns={"id": "Kod produktu", "name": "Nazev produktu", "purchasePrice": "Nakupni cena bez DPH", "Volné": "Skladem ks", "Množ.": "Prodeje od 1.9.2023"})
-new_col_order = ["code", "ID", "Nazev produktu", "Nakupni cena bez DPH", "Skladem ks", "Hodnota skladu v CZK", "Prodeje/mesic (prumer)", "Prodeje od 1.9.2023", "Posl.příjem", "Kolik dni vydrzi sklad?"]
+merged_data = merged_data.rename(columns={"id": "Kod produktu", "name": "Nazev produktu", "purchasePrice": "Nakupni cena bez DPH", "Volné": "Skladem ks", "Množ.": "Prodeje od 1.9.2024"})
+new_col_order = ["code", "ID", "Nazev produktu", "Nakupni cena bez DPH", "Skladem ks", "Hodnota skladu v CZK", "Prodeje/mesic (prumer)", "Prodeje od 1.9.2024", "Posl.příjem", "Kolik dni vydrzi sklad?"]
 merged_data = merged_data[new_col_order]
 merged_data = merged_data.drop(columns="code")
 # Sort data by Hodnota skladu
@@ -153,7 +153,7 @@ st.info("""
 **Hodnota skladu v CZK**: počet ks * NC jednoho kus = hodnota v CZK bez DPH, která leží skladem.\n
 **Prodeje/měsíc (průměr)**: průměrný počet ks, který se prodá za měsíc. Je to hodnota "Prodeje od 1.9.2024. Rok po tom čo som kúpil CHZ."
 přepočítaná aritmeticky na měsíce.\n
-**Prodeje od 1.9.2023**: celkový počet ks, který se prodal od 1.9.2023 do data aktualizace.\n
+**Prodeje od 1.9.2024**: celkový počet ks, který se prodal od 1.9.2024 do data aktualizace.\n
 **Posl.příjem**: datum, kdy naposledy byl daný produkt naskladněný do Shipmallu.\n
 **Kolik dni vydrží sklad?**: počet ks na skladě / prodeje za měsíc... přepočtené na dny. Na jak dlouho máme cca zásobu.
 """)
