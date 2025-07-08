@@ -77,7 +77,7 @@ merged_data = pandas.merge(df_products, merged_data, left_on="code", right_on="I
 # Add new column - average sales pers months
 # Number od days between today and 1.9.2023
 today = datetime.today()
-starting_date = datetime(2023, 9, 1)
+starting_date = datetime(2024, 9, 1)
 days =  (today - starting_date).days
 
 merged_data["Prodeje/mesic (prumer)"] = merged_data["Množ."] / days * 30 # use of original columns name, before changing it
@@ -151,7 +151,7 @@ st.info("""
 **Vysvětlivky**:\n
 **Nákupní cena bez DPH**: NC jednoho kusu produktu.\n
 **Hodnota skladu v CZK**: počet ks * NC jednoho kus = hodnota v CZK bez DPH, která leží skladem.\n
-**Prodeje/měsíc (průměr)**: průměrný počet ks, který se prodá za měsíc. Je to hodnota "Prodeje od 1.9.2023"
+**Prodeje/měsíc (průměr)**: průměrný počet ks, který se prodá za měsíc. Je to hodnota "Prodeje od 1.9.2024. Rok po tom čo som kúpil CHZ."
 přepočítaná aritmeticky na měsíce.\n
 **Prodeje od 1.9.2023**: celkový počet ks, který se prodal od 1.9.2023 do data aktualizace.\n
 **Posl.příjem**: datum, kdy naposledy byl daný produkt naskladněný do Shipmallu.\n

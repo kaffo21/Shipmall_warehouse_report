@@ -9,7 +9,7 @@ Musíme ale do reportu zahrnúť všetko, nielen to čo je skladom.
 Odstráníme všetky stĺpce okrem ID;Volné;Posl.příjem.
 
 Zo Shipmallu pak exportujeme Pohyby na sklade - uložíme ako warehouse_movements.csv
-Zahrnieme tam všetký akce "výdej" od 1.9.2023 - odkedy mám CHZ.
+Zahrnieme tam všetký akce "výdej" od 1.9.2024 - rok po tom čo mám CHZ.
 Odstráníme všetky stĺpce okrem ID;Množ.
 POZOR: len kategorie VYDEJ
 
