@@ -139,6 +139,7 @@ st.dataframe(styled_df_all, use_container_width=False)
 
 st.write(f"Aktualni hodnota skladu je: {+ warehouse_value:,.1f} CZK bez DPH.")
 st.write(f"Posledni aktualizace dat probehla: {creation_date}.")
+st.write(f"Posledni aktualizace dat probehla: {days}.")
 
 # Vlastní styl pro červené pozadí a bílé písmo
 st.markdown(f"""
